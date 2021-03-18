@@ -1,6 +1,6 @@
 const express = require("express");
-// const userRouter = require("./users/users-router.js");
-// const postRouter = require("./posts/posts-router.js");
+const userRouter = require("./users/users-router.js");
+const postRouter = require("./posts/posts-router.js");
 const helmet = require("helmet");
 // const mw = require("../api/middleware/middleware.js");
 
@@ -9,8 +9,8 @@ const server = express();
 // remember express by default cannot parse JSON in request bodies
 server.use(helmet(), express.json());
 // // global middlewares and the user's router need to be connected here
-// server.use("/api/users", userRouter);
-// server.use("/api/posts", postRouter);
+server.use("/api/users", userRouter);
+server.use("/api/posts", postRouter);
 
 server.get("/", (req, res) => {
   res.send(`<h2>Let's write some middleware!</h2>`);
